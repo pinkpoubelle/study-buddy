@@ -137,7 +137,7 @@ ul li::before {
     height: 18px;
     width: 18px;
     border-radius: 50%;
-    background-image: url(images/unchecked.png);
+    background-image: url(unchecked.png);
     background-size: cover;
     background-position: center;
     top: 4.5px;
@@ -150,7 +150,7 @@ ul li.checked {
 }
 /*when the ul li class is "checked" before the ul li it changes the image of unchecked to a checked circle*/
 ul li.checked::before {
-    background-image: url(images/checked.png);
+    background-image: url(checked.png);
 }
 /*ul li span represents the "x" or the delete option for the task*/
 ul li span {
