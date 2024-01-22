@@ -1,0 +1,267 @@
+/*applys to all elements in the html document
+padding is the space between the content of an element and the border
+margin is the space outside the border
+box-sizing is border-box to avoid layout issues due to different browsers box models
+font-family sets a perferred font
+*/
+* {
+    padding: 0; 
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+/* The side navigation menu */
+.sideBar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: rgb(255, 227, 231); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 50px; /* Place content 60px from the top */
+    transition: 1s; /* 0.5 second transition effect to slide in the sidenav */
+}
+/*closeBtn to close sideBar*/
+#closeBtn {
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    border: none;
+    padding: 5px 5px 5px 5px;
+    margin-top: 20px;
+    background-color: rgba(254, 239, 239, 0.883);
+    color: gray;
+    border-top-right-radius: .5em;
+    border-bottom-right-radius: .5em;
+    font-size: 16px;
+    cursor: pointer;
+}
+/*historyBtn to open sideBar*/
+#historyBtn {
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    border: none;
+    padding: 5px 5px 5px 5px;
+    margin-top: 20px;
+    background-color: rgba(254, 239, 239, 0.883);
+    color: gray;
+    border-top-right-radius: .5em;
+    border-bottom-right-radius: .5em;
+    font-size: 16px;
+    cursor: pointer;
+}
+/*"You've spent .. minutes studying"*/
+#timeElapsed, #history {
+    padding: 20px;
+    font-size: 12px;
+}
+/*"Current session history:"*/
+#header {
+    padding: 20px;
+    font-size: 14px;
+}
+/*title-container class set with visual properties for the title element*/
+.title-container {
+    background-color: transparent;
+    width: min(80%, 500px);
+    height: min(55px);
+    position: absolute;
+    transform: translate(-50%, -300%);
+    top: 30%;
+    left: 50%;
+    padding: 0;
+    border: none;
+}
+/*tasks class set with visual properties*/
+.tasks {
+    width: 100%;
+    max-width: 500px; 
+    background: transparent;
+}
+/*heading 2 in tasks class set with visual properties ("Things to do")*/
+.tasks h2 {
+    color: gray;
+    font-size: 25px;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 8px;
+}
+/*row class set with visual properties (bar for user input)*/
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(255, 226, 231);;
+    border-radius: 30px;
+    padding-left: 10px;
+    margin-bottom: 15px; 
+}
+/*input tag text set with visual properties ("add your task.." placeholder)*/
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px;
+    font-weight: 15px;
+    font-size: 12px;
+    color: gray;
+}
+/*button tag set with visual properties (entire button)*/
+button {
+    border: none;
+    outline: none;
+    padding: 10px 25px;
+    background:gray;
+    font-size: 12px;
+    border-radius: 40px;
+    color: white;
+    cursor: pointer;
+}
+/*unordered lists tag with list items set with visual properties (list of tasks)*/
+ul li {
+    list-style: none;
+    font-size: 14px;
+    color: gray;
+    padding: 4px 3px 6px 35px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+/*before the list items in the unordered list this adds the image of an unchecked circle*/
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-image: url(images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 4.5px;
+    left: 8px;
+}
+/*when the ul li class is "checked" the colour of the text changes to pink and it has a line strikethrough*/
+ul li.checked {
+    color: pink;
+    text-decoration: line-through;
+}
+/*when the ul li class is "checked" before the ul li it changes the image of unchecked to a checked circle*/
+ul li.checked::before {
+    background-image: url(images/checked.png);
+}
+/*ul li span represents the "x" or the delete option for the task*/
+ul li span {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    color: gray;
+    line-height: 30px;
+    text-align: center;
+}
+/*alphabetical sort button visual properties*/
+.sortBtn {
+    font-size: 10px;
+    border: none;
+    margin-top: 5px;
+    padding: 2px 5px;
+    width: 80px;
+    background-color: lightgray;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+}
+/*heading one visual properties of the title*/
+.h1 {
+    text-align: center;
+    font-size: 3em;
+    font-weight: 525;
+    color: rgb(255, 255, 255);
+    font-family: "Poppins", sans-serif;
+}
+/*visual properties of the website background*/
+body {
+    background-color: pink;
+}
+/*container class visual properties (where the timer, various buttons and task list is)*/
+.container {
+    background-color: white;
+    width: min(90%, 500px);
+    position: absolute;
+    transform: translate(-50%, -40%);
+    top: 50%;
+    left: 50%;
+    padding: 3em 2.75em;
+    border-radius: 0.5em;
+}
+/*section-container class visual properties (focus, short break, long break buttons)*/
+.section-container {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+/*btn class: sets background to gray and font to white (for focus, shortbreak, longbreak buttons)*/
+.btn {
+    padding: 1em 2em;
+    border-radius: 0.5em;
+    background-color: gray;
+    color: white;
+    transition: opacity .2s;
+}
+/*when these elements are hoverred over opacity is changed*/
+button:hover, ul li span:hover, .btn:hover, #btn-start:hover, #btn-pause:hover, #btn-reset:hover, #btn-submit:hover{
+    opacity: .6;
+}
+/*btn-focus: sets background to pink (for focus, shortbreak, longbreak)*/
+.btn-focus {
+    background-color: pink;
+}
+/*time-btn-container visual properties (for timer, start, pause, reset)*/
+.time-btn-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+/*time id: sets timer display visual properties*/
+#time {
+    text-align: center;
+    color: rgb(127, 116, 116);
+    font-size: 5em;
+    font-weight: 600;
+}
+/*btn-container visual properties (for start, pause, reset)*/
+.btn-container {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+/*these ids are set with the same visual properties*/
+#btn-start, #btn-pause {
+    border: none;
+    padding: 1em 2em;
+    background-color: rgba(254, 239, 239, 0.883);
+    color: gray;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+/*reset icon is set with colour gray*/
+#btn-reset {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: gray;
+    font-size: 1.6em;
+}
+/*hide class does not display the element*/
+.hide {
+    display: none;
+}
+/*show class displays the element*/
+.show {
+    display: block;
+}

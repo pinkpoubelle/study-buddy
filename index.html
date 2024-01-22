@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Study Buddy!</title>
+
+    <script src="HackTimer.js"> </script>
+    <script src="HackTimerWorker.js"> </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- Google Fonts -->
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" 
+    rel="stylesheet"
+    />
+
+    <!-- Stylesheet-->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<!--The body of the website. It is divided into two sections: title-container, container-->
+<body>
+    <!--sideBar for the history of time spent-->
+    <div id="mySidebar" class="sideBar">
+        <!--Displays paragraph with the text "Current session history".-->
+        <p1 id="header">Current session history: </p1>
+        <!--Displays paragraph with the text "you've spent 0 minutes studying".-->
+        <p2 id="timeElapsed">You've spent 0 minutes studying.</p2>
+    </div>
+    <!--buttons to open and close history sidebar-->
+    <span id="historyBtn" class="show">History</span> 
+    <span id="closeBtn" class="hide">Close</span>
+    <div class="title-container">
+        <h1 id="Pomodoro" class="h1">Study Buddy!</h1>
+        <!--Displays a heading with the text "Pomodoro Timer".-->
+    </div>
+    <div class="container">
+        <!--Container class is divided into three sections: section-container, time-btn-container, todo-app-->
+        <div class="section-container">
+            <!--section-container holds all the timer buttons users can choose, that hold a different value-->
+            <button id="focus" class="btn btn-timer btn-focus">Focus</button>
+            <button id="shortbreak" class= "btn btn-shortbreak">Short Break</button>
+            <button id="longbreak" class= "btn btn-longbreak">Long Break</button>
+        </div>
+        <!--time-btn-container holds the countdown timer that will be displayed on the website and a section, btn-container.-->
+        <div class="time-btn-container">
+            <span id="time"></span>
+            <!--btn-container holds all the buttons that will be used to start, pause, and reset the timer.-->
+            <div class="btn-container">
+                <!--uses class="" to either show the button or hide it-->
+                <button id="btn-start" class="show">Start</button>
+                <button id="btn-pause" class="hide">Pause</button>
+                <button id="btn-reset" class="hide">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+        </div>
+        <!--tasks divider holds the display of the tasks the user inputs-->
+        <div class="tasks"> 
+            <!--heading-->
+            <h2>Things to do...</h2>
+            <!--row divider holds the place where the user can input their task to be added to their todo list-->
+            <div class="row">
+                <!--input tag for user input and button tag to create a button for users to add their tasks-->
+                <input type="text" id="input-box" placeholder="Add your task..">
+                <button onclick="addTask()">Add</button> <!--calls addTask() function from javascript file-->
+            </div>
+            <!--unordered list tag, uses bullet points instead of numbers and is where the tasks of the user will be added to-->
+            <ul id="list-container">
+                <!-- <li class="checked">Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li> -->
+            </ul>
+            <!--sortBtn to sort the list the user inputs alphabetically-->
+            <button class="sortBtn" onclick="sortList()">Sort A-Z</button>
+        </div>
+    </div>
+    <!-- Script from js -->
+    <script src="script.js"></script>
+</body>
+</html>
