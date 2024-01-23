@@ -36,7 +36,7 @@ function loadTime() {
 previousTime = loadTime(); // // calls loadTime function to ensure that the page loads it recovers the saved previousTime to be used in the timeTotalElapsed() to be added to the historyTotal
 
 //timeElapsed function updates the current session history in the sidebar to let the user know how long they have been studying for
-function timeElapsed(timePassed) {
+function timeElapsed(timePassed, previousTime) {
     let timeElapsed = document.getElementById("timeElapsed"); // pulls timeElapsed element from HTML
     let minutesPassed = Math.floor(timePassed/60); // converts the seconds elapsed into minutes
     // if minutesPassed equals 1 then it changes the sentence to say "minute" otherwise it's "minutes"
@@ -120,12 +120,12 @@ function startTimer(){
          timePassed++;
          timeLeft--; // decreases timeLeft variable by 1 
          updateTimer(timeLeft); // calls updateTimer function to update the timer display with the new timeLeft
-         timeElapsed(timePassed);
+         timeElapsed(timePassed, previousTime);
        if(timeLeft === 0) { // checks if timeLeft equals 0
          clearInterval(interval); // if it is zero, clears the interval to stop the timer
          alert("Time's up!"); // shows an alert "Time's up!"
          timeLeft = orgTimeLeft; // resets the timeLeft to its original value (orgTimeLeft)
-         timeElapsed(timePassed);
+         timeElapsed(timePassed, previousTime);
         }
      }, 1000);
 }
