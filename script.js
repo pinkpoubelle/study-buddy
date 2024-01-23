@@ -22,6 +22,8 @@ let previousTime = 0; // initializes previousTime variable for history of time
 let previousTimeStr = ''; // used to convert localstorage item "Time" from string to integer 
 let historyTotal = 0; // initializes historyTotal for time 
 
+localStorage.clear();
+
 // saveTime function saves the historyTotal (timePassed plus the previousTime) to localStorage as a string
 function saveTime(historyTotal) {
     localStorage.setItem("Time", historyTotal);
