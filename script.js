@@ -18,6 +18,22 @@ let interval; // stores interval ID
 let timeLeft = 1500; // initial value when website loads
 let orgTimeLeft = 1500; // orgTimeLeft allows us to reset the timeLeft variable to the orginal time left
 let timePassed = 0; // stores the amount of time passed for the session until the pages reloads
+// let previousTime = 0; // initializes previousTime variable for history of time
+// let previousTimeStr = ''; // used to convert localstorage item "Time" from string to integer 
+// let historyTotal = 0; // initializes historyTotal for time 
+
+// saveTime function saves the historyTotal (timePassed plus the previousTime) to localStorage as a string
+function saveTime(historyTotal) {
+    localStorage.setItem("Time", historyTotal);
+}
+// loadTime function recovers the stored historyTotal from localStorage
+function loadTime() {
+    previousTimeStr = localStorage.getItem("Time"); //from localStorage as a string to variable previousTimeStr
+    previousTime = parseInt(previousTimeStr); // previousTime is converted into integer
+    return previousTime; //  returns integer of previousTime
+}
+
+previousTime = loadTime(); // // calls loadTime function to ensure that the page loads it recovers the saved previousTime to be used in the timeTotalElapsed() to be added to the historyTotal
 
 //timeElapsed function updates the current session history in the sidebar to let the user know how long they have been studying for
 function timeElapsed(timePassed) {
@@ -30,7 +46,23 @@ function timeElapsed(timePassed) {
         formattedTime = `You've spent ` + `${minutesPassed.toString().padStart(2)}` + ` minutes studying.`;
     }
     timeElapsed.innerHTML = formattedTime; // timeElapsed element is now takes the formattedTime string
+    timeTotalElapsed(timePassed, previousTime);
 }
+
+// timeTotalElapsed function updates the all time history in the sidebar to let the user know their lifetime studying stats
+function timeTotalElapsed(timePassed, previousTime) {
+    let timeHistory = document.getElementById("timeHistory");
+    let historyTotal = previousTime + timePassed; // adds previousTime from loadData() with current session timePassed to get total
+    let historyMinutesPassed = Math.floor(historyTotal/60); // converts the seconds elapsed into minutes
+    if (historyMinutesPassed === 1) {
+        formattedTime = `You've spent ` + `${historyMinutesPassed.toString().padStart(2)}` + ` minute studying.`;
+    } else {
+        formattedTime = `You've spent ` + `${historyMinutesPassed.toString().padStart(2)}` + ` minutes studying.`;
+    }
+    timeHistory.innerHTML = formattedTime;
+    saveTime(historyTotal); // calls saveTime function to save updated historyTotal
+}
+
 // clickFocus function updates the timer display to 25 minutes and changes the colour of the focusButton to be highlighted as pink. all other buttons are changed to the colour gray.
 function clickFocus(){
     focusButton.classList.add("btn-focus");
@@ -83,7 +115,7 @@ function startTimer(){
     startBtn.classList.remove("show"); // removes "show" class
     pause.classList.add("show"); // adds "show" class to pause, reset to display those button
     reset.classList.add("show"); 
-    // sets an interval that runs every second (1000 milliseconds)
+    // sets an interval that runs every second
       interval = setInterval(()=>{ 
          timePassed++;
          timeLeft--; // decreases timeLeft variable by 1 
@@ -157,6 +189,7 @@ function saveData(){
 function loadData() {
     listContainer.innerHTML = localStorage.getItem("data");
 }
+
 loadData(); // calls loadData function to ensure that the page loads it recovers the saved list of tasks
 /* openBar function sets width of sideBar to 250px and margin left to 250px, displays the sideBar */
 function openBar() {

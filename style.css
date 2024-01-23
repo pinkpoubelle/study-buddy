@@ -52,12 +52,12 @@ font-family sets a perferred font
     cursor: pointer;
 }
 /*"You've spent .. minutes studying"*/
-#timeElapsed, #history {
+#timeElapsed, #timeHistory {
     padding: 20px;
     font-size: 12px;
 }
 /*"Current session history:"*/
-#header {
+.header {
     padding: 20px;
     font-size: 14px;
 }
