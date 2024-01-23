@@ -18,9 +18,9 @@ let interval; // stores interval ID
 let timeLeft = 1500; // initial value when website loads
 let orgTimeLeft = 1500; // orgTimeLeft allows us to reset the timeLeft variable to the orginal time left
 let timePassed = 0; // stores the amount of time passed for the session until the pages reloads
-// let previousTime = 0; // initializes previousTime variable for history of time
-// let previousTimeStr = ''; // used to convert localstorage item "Time" from string to integer 
-// let historyTotal = 0; // initializes historyTotal for time 
+let previousTime = 0; // initializes previousTime variable for history of time
+let previousTimeStr = ''; // used to convert localstorage item "Time" from string to integer 
+let historyTotal = 0; // initializes historyTotal for time 
 
 // saveTime function saves the historyTotal (timePassed plus the previousTime) to localStorage as a string
 function saveTime(historyTotal) {
